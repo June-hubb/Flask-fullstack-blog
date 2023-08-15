@@ -1,0 +1,20 @@
+{%extends "layout.html"%}
+
+    
+{% block content %}
+<center><h4>Welcome Geeks!!</h4></center>   
+    {% for pos in post %}
+   
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="static/profile_pics/default.png">
+          <div class="media-body">
+            <div class="article-metadata">
+              <small><b>{{ pos.author.username }}</b></small>
+              <small class="text-muted">{{ pos.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h5><a class="article-title" href="{{ url_for('post', post_id=pos.id) }}">{{ pos.title }}</a></h5>
+            <p class="article-content">{{ pos.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
